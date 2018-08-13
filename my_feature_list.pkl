@@ -7,10 +7,4 @@ aS'bonus'
 p3
 aS'exercised_stock_options'
 p4
-aS'shared_receipt_with_poi'
-p5
-aS'from_poi_percentage'
-p6
-aS'to_poi_percentage'
-p7
 a.
