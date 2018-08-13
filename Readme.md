@@ -71,29 +71,29 @@ game me the same final performance):
 
 - component 1:
   
-  salary:  0.0203304605566
-  bonus:  0.134478159961
-  exercised_stock_options:  0.990707977234
-  shared_receipt_with_poi:  2.66918293018e-05
-  from_poi_percentage:  2.51425329156e-09
-  to_poi_percentage:  3.67443837924e-10
+  salary:  0.0203304605566  
+  bonus:  0.134478159961  
+  exercised_stock_options:  0.990707977234  
+  shared_receipt_with_poi:  2.66918293018e-05  
+  from_poi_percentage:  2.51425329156e-09  
+  to_poi_percentage:  3.67443837924e-10  
 
 - component 2: 
-  salary:  0.0379163022718
-  bonus:  0.990096012215
-  exercised_stock_options:  -0.13517319607
-  shared_receipt_with_poi:  0.000669090863749
-  from_poi_percentage:  1.48071538766e-08
-  to_poi_percentage:  1.37641880955e-09
+  salary:  0.0379163022718  
+  bonus:  0.990096012215  
+  exercised_stock_options:  -0.13517319607  
+  shared_receipt_with_poi:  0.000669090863749  
+  from_poi_percentage:  1.48071538766e-08  
+  to_poi_percentage:  1.37641880955e-09  
 
 - component 3:
 
-  salary:  0.9990740457
-  bonus:  -0.040312292651
-  exercised_stock_options:  -0.0150301800654
-  shared_receipt_with_poi:  0.000252897419622
-  from_poi_percentage:  -1.2900067922e-07
-  to_poi_percentage:  -6.8375386973e-08
+  salary:  0.9990740457  
+  bonus:  -0.040312292651  
+  exercised_stock_options:  -0.0150301800654  
+  shared_receipt_with_poi:  0.000252897419622  
+  from_poi_percentage:  -1.2900067922e-07  
+  to_poi_percentage:  -6.8375386973e-08  
 
 
 We can see that the features `shared_receipt_with_poi`, `from_poi_percentage` and `to_poi_percentage`
@@ -104,7 +104,7 @@ Using only a `MinMaxScaler`, without a PCA, I reached the following performance:
 
 Accuracy: 0.83440       
 Precision: 0.66996      
-Recall: 0.33900 
+Recall: 0.33900  
 F1: 0.45020
 
 I opted by keeping using the PCA instead of the scaler for a more balanced performance between 
@@ -126,16 +126,16 @@ Using GaussianNB, the statistics were:
 
   Accuracy: 0.79090       
   Precision: 0.44728      
-  Recall: 0.19300 
+  Recall: 0.19300  
   F1: 0.26965    
 
 At the end, I used KNeighborsClassifier, which gave me a balanced precision and recall levels. 
 The Statistics for the KNeighborsClassifier were:
 
-  Accuracy: 0.79190       
-  Precision: 0.47461      
-  Recall: 0.37850 
-  F1: 0.42114     
+Accuracy: 0.82060  
+Precision: 0.57875  
+Recall: 0.37850   
+F1: 0.45768   
 
 As we can see, the overall performance for KNeighborsClassifier algorithm is better than GaussianNB.
 
@@ -153,18 +153,20 @@ To tune the selected algorithm, I used the `GridSearchCV` selector. This algorit
 exhaustive grid search in the supplied hyper-parameters and returns the best configuration found. 
 I used the following hyper-parameters for `KNeighborsClassifier`:
 
-# parameters = {
-#   'algorithm': ['auto'],
-#   'n_neighbors': [1, 3, 5, 10],
-#   'leaf_size': [5, 10, 20, 30, 50],
-#   'weights': ['uniform', 'distance'],
-#   'p': [1, 2]
-# }
+```python
+ parameters = {
+   'algorithm': ['auto'],
+   'n_neighbors': [1, 3, 5, 10],
+   'leaf_size': [5, 10, 20, 30, 50],
+   'weights': ['uniform', 'distance'],
+   'p': [1, 2]
+ }
+```
 
 These parameters were based on the Classifier documentation, on some examples observation and 
 (a lot of) guesswork. Based on that, the `GridSearchCV` selected the following parameters:
 
-```
+```python
 algorithm='auto', 
 leaf_size=5, 
 metric='minkowski',
